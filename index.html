@@ -44,6 +44,14 @@
 .scroll-reveal { opacity: 0; transform: translateY(34px); transition: opacity .85s ease, transform .85s cubic-bezier(.2,.7,.2,1); }
 .scroll-reveal.is-visible { opacity: 1; transform: translateY(0); }
 @media (prefers-reduced-motion: reduce) { .scroll-reveal { opacity: 1; transform: none; transition: none; } }
+
+/* Identidad institucional — misión y visión */
+.monteverdi-values { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(22px,4vw,64px); margin-top:clamp(48px,7vw,100px); }
+.monteverdi-value { border-top:1px solid var(--gold); padding-top:28px; }
+.monteverdi-value h3 { font-family:var(--serif); font-size:clamp(30px,3.2vw,45px); font-weight:400; margin:12px 0 18px; }
+.monteverdi-value > p:last-child { color:var(--muted); font-size:15px; line-height:1.9; }
+.story-copy > p:not(.overline):not(.section-index) { margin-bottom:17px; }
+@media(max-width:700px) { .monteverdi-values { grid-template-columns:1fr; gap:32px; } }
 </style>
 </head>
 <body>
@@ -66,7 +74,7 @@
       <nav class="navigation" aria-label="Navegación principal">
         <a href="#esencia">Nuestra esencia</a>
         <a href="#experiencias">Experiencias</a>
-        <a href="#historia">Nosotros</a>
+        <a href="#historia">Quiénes somos</a>
       </nav>
       <a class="header-contact" href="#contacto">Hablemos de tu boda <span aria-hidden="true">↗</span></a>
     </div>
@@ -132,7 +140,29 @@
     <section class="story section-pad" id="historia" aria-labelledby="story-title">
       <div class="shell story-grid">
         <div class="story-art" aria-hidden="true"><div class="story-art-inner"><span class="story-monogram">M</span><span class="story-art-caption">MUSIC · MEMORY · MOMENTS</span></div></div>
-        <div class="story-copy"><p class="section-index">03 / NUESTRA HISTORIA</p><p class="overline">TRES HERMANOS, UNA PASIÓN</p><h2 id="story-title">La música forma parte <em>de quienes somos.</em></h2><p>Grupo Monteverdi nace de una historia compartida entre tres hermanos músicos: piano, violín y guitarra. Una trayectoria construida alrededor del estudio, la interpretación y el deseo de compartir la música en vivo.</p><p>Hoy queremos acompañar celebraciones con la misma dedicación con la que vivimos cada interpretación.</p><a class="text-link" href="#contacto">Conversemos sobre tu celebración <span aria-hidden="true">↗</span></a></div>
+        <div class="story-copy">
+          <p class="section-index">03 / NUESTRA IDENTIDAD</p>
+          <p class="overline">GRUPO MONTEVERDI</p>
+          <h2 id="story-title">¿Quiénes <em>somos?</em></h2>
+          <p>Grupo Monteverdi es una agrupación musical ecuatoriana integrada por músicos profesionales con formación académica superior, cuya experiencia artística, sensibilidad interpretativa y pasión por la música constituyen los pilares de nuestra identidad.</p>
+          <p>Nuestra trayectoria se ha desarrollado en diferentes escenarios y espacios artísticos, acompañando bodas, eventos corporativos, celebraciones institucionales, ceremonias, recepciones, cócteles y encuentros sociales. Cada presentación representa una oportunidad para crear ambientes únicos y enriquecer momentos significativos a través de la música en vivo.</p>
+          <p>Contamos con una propuesta artística versátil que integra diferentes formatos instrumentales y vocales, cuidadosamente adaptados a la naturaleza, estilo y necesidades de cada ocasión. Esta diversidad nos permite ofrecer experiencias musicales que combinan elegancia, expresividad y calidad interpretativa.</p>
+          <p>En Grupo Monteverdi entendemos que cada evento tiene una identidad propia. Por ello, prestamos especial atención a la selección del repertorio, la presentación artística y los detalles que contribuyen a crear una atmósfera distinguida y memorable.</p>
+          <p><strong>Nuestro compromiso es transformar la música en una experiencia que inspire, emocione y permanezca en la memoria de quienes la viven.</strong></p>
+          <a class="text-link" href="#contacto">Conversemos sobre tu evento <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <div class="shell monteverdi-values">
+        <article class="monteverdi-value">
+          <p class="overline">NUESTRO PROPÓSITO</p>
+          <h3>Misión</h3>
+          <p>Ofrecer experiencias musicales en vivo de alta calidad, mediante propuestas artísticas versátiles y personalizadas que acompañen bodas, ceremonias, eventos corporativos, celebraciones institucionales y encuentros sociales, creando ambientes distinguidos y momentos memorables.</p>
+        </article>
+        <article class="monteverdi-value">
+          <p class="overline">HACIA DÓNDE VAMOS</p>
+          <h3>Visión</h3>
+          <p>Consolidarnos como una agrupación musical referente en Ecuador por nuestra excelencia interpretativa, innovación artística y capacidad para desarrollar experiencias musicales que respondan a las nuevas tendencias y necesidades del mercado de eventos.</p>
+        </article>
       </div>
     </section>
 

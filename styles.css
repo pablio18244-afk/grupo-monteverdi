@@ -244,3 +244,17 @@ body::after {
 .monteverdi-footer .footer-contact-link svg {flex:none;opacity:.85;}
 .monteverdi-footer .footer-social-note {font-size:12px;line-height:1.7;opacity:.72;margin-top:5px;}
 @media(prefers-reduced-motion:reduce){.monteverdi-footer .footer-social-icons a{transition:none;}.monteverdi-footer .footer-social-icons a:hover{transform:none;}}
+
+/* Footer alignment refinement: consistent baseline and optical centering */
+.monteverdi-footer .monteverdi-footer-grid {align-items:start;}
+.monteverdi-footer .monteverdi-footer-grid > div {align-items:flex-start;justify-content:flex-start;}
+.monteverdi-footer .monteverdi-footer-heading {min-height:18px;line-height:18px;margin:0 0 10px;}
+.monteverdi-footer .footer-contact-link {display:grid;grid-template-columns:22px minmax(0,1fr);align-items:center;column-gap:12px;min-height:32px;line-height:1.5;}
+.monteverdi-footer .footer-contact-link svg {display:block;width:20px;height:20px;justify-self:center;}
+.monteverdi-footer .footer-contact-link span {display:block;line-height:1.5;}
+.monteverdi-footer .footer-social-icons {align-items:center;gap:12px;margin-top:0;min-height:44px;}
+.monteverdi-footer .footer-social-icons a {width:44px;height:44px;flex:0 0 44px;border-color:rgba(135,117,91,.35);color:var(--taupe);}
+.monteverdi-footer .footer-social-icons a:hover,.monteverdi-footer .footer-social-icons a:focus-visible {border-color:var(--gold);background:rgba(164,135,89,.07);}
+.monteverdi-footer .footer-social-icons svg {width:19px;height:19px;}
+.monteverdi-footer .footer-social-note {margin:3px 0 0;line-height:1.65;}
+@media(max-width:750px){.monteverdi-footer .monteverdi-footer-grid {row-gap:34px;}}

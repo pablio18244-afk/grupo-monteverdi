@@ -140,11 +140,8 @@
     (() => {
       const welcome = document.getElementById('welcome');
       const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      let seen = false;
-      try { seen = sessionStorage.getItem('monteverdi-welcome-seen') === '1'; } catch (_) {}
-      if (reduced || seen) { welcome.remove(); return; }
+      if (reduced) { welcome.remove(); return; }
       document.documentElement.classList.add('welcome-playing');
-      try { sessionStorage.setItem('monteverdi-welcome-seen', '1'); } catch (_) {}
       const finish = () => {
         document.documentElement.classList.remove('welcome-playing');
         welcome.remove();

@@ -196,3 +196,41 @@ body::after {
 @media (max-width: 700px) {
   body::after { opacity: .65; }
 }
+
+/* Redes y contacto — pie editorial */
+.monteverdi-footer { padding-top: 60px; }
+.monteverdi-footer-grid { display:grid;grid-template-columns:1.45fr 1fr .65fr;gap:clamp(28px,5vw,75px);padding-bottom:55px; }
+.monteverdi-footer-grid > div { display:flex;flex-direction:column;align-items:flex-start;gap:13px; }
+.monteverdi-footer-grid a {font-size:13px;line-height:1.65;overflow-wrap:anywhere;transition:opacity .2s ease;}
+.monteverdi-footer-grid a:hover {opacity:.65;}
+.monteverdi-footer-brand p {font-size:13px;line-height:1.8;max-width:300px;}
+.monteverdi-footer-heading {font-size:10px;letter-spacing:.24em;font-weight:700;margin:0 0 9px;}
+.monteverdi-footer-bottom {border-top:1px solid rgba(255,255,255,.2);display:flex;justify-content:space-between;gap:15px;padding-block:20px;font-size:11px;opacity:.7;}
+@media(max-width:750px){.monteverdi-footer-grid{grid-template-columns:1fr 1fr}.monteverdi-footer-brand{grid-column:1/-1}}
+@media(max-width:440px){.monteverdi-footer-grid{grid-template-columns:1fr}.monteverdi-footer-brand{grid-column:auto}.monteverdi-footer-bottom{flex-direction:column}}
+/* Landing de cotización */
+.quote-page {background:var(--ivory);}
+.quote-hero {padding-block:90px 55px;text-align:center;max-width:800px;}
+.quote-hero h1 {font-size:clamp(44px,7vw,84px);line-height:1.1;margin:22px 0;}
+.quote-hero > p:last-child {font-size:16px;color:var(--muted);line-height:1.9;max-width:600px;margin-inline:auto;}
+.quote-layout {display:grid;grid-template-columns:minmax(240px,.8fr) minmax(0,1.5fr);gap:clamp(30px,6vw,95px);padding-bottom:110px;align-items:start;}
+.quote-aside {padding-top:35px;}
+.quote-ornament {font-family:var(--serif);font-size:100px;color:var(--gold);line-height:1;}
+.quote-aside h2 {font-size:clamp(34px,4vw,55px);line-height:1.16;margin:20px 0;}
+.quote-aside > p:not(.overline) {color:var(--muted);font-size:14px;line-height:1.9;}
+.quote-aside-note {margin-top:35px;border-top:1px solid var(--line);padding-top:22px;font-size:12px!important;}
+.quote-form {background:var(--paper);padding:clamp(24px,4vw,52px);border:1px solid var(--line);box-shadow:0 18px 55px rgba(64,58,54,.055);}
+.quote-form-heading h2 {font-size:clamp(30px,3vw,44px);line-height:1.2;margin:13px 0 30px;}
+.quote-fields {display:grid;grid-template-columns:1fr 1fr;gap:22px 18px;}
+.quote-form label {display:flex;flex-direction:column;gap:9px;font-size:12px;letter-spacing:.02em;font-weight:600;color:var(--ink);}
+.quote-form label span {color:var(--gold);}
+.quote-form input,.quote-form select,.quote-form textarea {width:100%;min-width:0;border:1px solid var(--line);background:#fff;padding:13px 14px;color:var(--ink);font:14px/1.5 var(--sans);border-radius:2px;outline-offset:3px;}
+.quote-form input:focus,.quote-form select:focus,.quote-form textarea:focus {border-color:var(--gold);}
+.quote-story {margin-top:24px;}
+.quote-form textarea {resize:vertical;}
+.quote-privacy {font-size:12px;color:var(--muted);line-height:1.7;margin-top:23px;}
+.quote-actions {display:flex;align-items:center;flex-wrap:wrap;gap:18px;margin-top:22px;}
+.quote-actions button {cursor:pointer;}
+.quote-mail {border:0;background:none;color:var(--ink);font:600 12px var(--sans);text-decoration:underline;text-underline-offset:5px;}
+@media(max-width:850px){.quote-layout{grid-template-columns:1fr}.quote-aside{padding-top:0}.quote-ornament{display:none}}
+@media(max-width:560px){.quote-hero{padding-block:55px 35px}.quote-fields{grid-template-columns:1fr}.quote-form{padding:24px 20px}.quote-layout{padding-bottom:65px}}

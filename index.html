@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f5f0">
+  <meta name="description" content="Grupo Monteverdi Wedding Music. Música en vivo para acompañar con elegancia los momentos especiales de tu boda.">
+  <title>Grupo Monteverdi | Wedding Music</title>
+  <link rel="stylesheet" href="styles.css">
+<style>
+/* V2 — Bienvenida editorial: entrada al salón */
+.welcome {
+  position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center;
+  background: var(--ivory); pointer-events: none;
+  animation: welcome-exit .85s cubic-bezier(.55, 0, .2, 1) 2.65s both;
+}
+.welcome-inner { width: min(86vw, 820px); text-align: center; }
+.welcome-letters { display: flex; justify-content: center; gap: clamp(2px, 1.1vw, 13px); }
+.welcome-letters span {
+  display: inline-block; font: 400 clamp(23px, 5.8vw, 72px)/1.2 var(--serif);
+  color: var(--ink); opacity: 0; transform: translateY(-70px);
+  animation: letter-arrive 1.05s cubic-bezier(.2, .75, .18, 1) both;
+}
+.welcome-letters span:nth-child(1) { animation-delay: .22s; }
+.welcome-letters span:nth-child(2) { animation-delay: .30s; }
+.welcome-letters span:nth-child(3) { animation-delay: .38s; }
+.welcome-letters span:nth-child(4) { animation-delay: .46s; }
+.welcome-letters span:nth-child(5) { animation-delay: .54s; }
+.welcome-letters span:nth-child(6) { animation-delay: .62s; }
+.welcome-letters span:nth-child(7) { animation-delay: .70s; }
+.welcome-letters span:nth-child(8) { animation-delay: .78s; }
+.welcome-letters span:nth-child(9) { animation-delay: .86s; }
+.welcome-letters span:nth-child(10) { animation-delay: .94s; }
+.welcome-rule { height: 1px; width: min(55%, 290px); background: var(--gold); margin: 24px auto 16px; transform: scaleX(0); animation: rule-reveal .7s ease 1.65s forwards; }
+.welcome-subtitle { font: 500 clamp(9px, 1.1vw, 12px)/1.6 var(--sans); letter-spacing: .38em; color: var(--taupe); opacity: 0; animation: subtitle-reveal .8s ease 1.8s forwards; }
+@keyframes letter-arrive { to { opacity: 1; transform: translateY(0); } }
+@keyframes rule-reveal { to { transform: scaleX(1); } }
+@keyframes subtitle-reveal { to { opacity: 1; } }
+@keyframes welcome-exit { 0%, 5% { opacity: 1; } 100% { opacity: 0; visibility: hidden; } }
+@media (prefers-reduced-motion: reduce) { .welcome { display: none; } }
+
+</style>
+</head>
+<body>
+  <div class="welcome" id="welcome" aria-hidden="true">
+    <div class="welcome-inner">
+      <div class="welcome-letters" aria-label="Monteverdi">
+        <span>M</span><span>O</span><span>N</span><span>T</span><span>E</span><span>V</span><span>E</span><span>R</span><span>D</span><span>I</span>
+      </div>
+      <div class="welcome-rule"></div>
+      <div class="welcome-subtitle">WEDDING MUSIC</div>
+    </div>
+  </div>
+  <a class="skip-link" href="#contenido">Ir al contenido</a>
+  <header class="site-header">
+    <div class="header-inner shell">
+      <a class="brand" href="#inicio" aria-label="Grupo Monteverdi, inicio">
+        <span class="brand-name">MONTEVERDI</span>
+        <span class="brand-subtitle">WEDDING MUSIC</span>
+      </a>
+      <nav class="navigation" aria-label="Navegación principal">
+        <a href="#esencia">Nuestra esencia</a>
+        <a href="#experiencias">Experiencias</a>
+        <a href="#historia">Nosotros</a>
+      </nav>
+      <a class="header-contact" href="#contacto">Hablemos de tu boda <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-ring art-ring-one"></div>
+        <div class="art-ring art-ring-two"></div>
+        <div class="art-stem"></div>
+        <span class="art-word">M</span>
+      </div>
+      <div class="shell hero-content">
+        <p class="eyebrow"><span class="eyebrow-line"></span> GRUPO MONTEVERDI · WEDDING MUSIC</p>
+        <h1 id="hero-title">La belleza de un día<br><em>que merece su propia música.</em></h1>
+        <p class="hero-description">Una presencia musical delicada y memorable para acompañar cada instante de una celebración tan única como tu historia.</p>
+        <a class="button button-primary" href="#experiencias">Descubre nuestra música <span aria-hidden="true">↗</span></a>
+        <div class="hero-footnote"><span class="tiny-diamond" aria-hidden="true">✧</span> MÚSICA EN VIVO · ECUADOR</div>
+      </div>
+      <div class="hero-side-label" aria-hidden="true">THE ART OF A BEAUTIFUL MOMENT</div>
+    </section>
+
+    <section class="intro section-pad" id="esencia" aria-labelledby="essence-title">
+      <div class="shell intro-grid">
+        <div><p class="section-index">01 / NUESTRA ESENCIA</p></div>
+        <div class="intro-copy">
+          <p class="overline">UN DETALLE QUE SE SIENTE</p>
+          <h2 id="essence-title">Hay detalles que no necesitan destacar<br><em>para ser inolvidables.</em></h2>
+          <p>La música puede ser ese gesto sutil que completa la atmósfera: acompaña las miradas, abraza los silencios y da un significado especial a cada momento.</p>
+          <div class="signature-rule"><span aria-hidden="true">✳</span><span>MONTEVERDI</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="experiences section-pad" id="experiencias" aria-labelledby="experiences-title">
+      <div class="shell">
+        <div class="section-heading">
+          <div><p class="section-index">02 / EXPERIENCIAS MUSICALES</p><h2 id="experiences-title">Cada celebración tiene <em>su propio ritmo.</em></h2></div>
+          <p>Explora algunas de nuestras propuestas musicales. La disponibilidad y conformación se confirman para cada evento.</p>
+        </div>
+        <div class="experience-grid">
+          <article class="experience-card">
+            <div class="experience-visual visual-chamber" aria-hidden="true"><span class="visual-number">I</span><span class="visual-motif">♪</span></div>
+            <div class="experience-info"><div><p class="card-kicker">ELEGANCIA ÍNTIMA</p><h3>Grupo de Cámara</h3></div><span class="card-arrow" aria-hidden="true">↗</span></div>
+            <p class="card-description">Una propuesta instrumental para acompañar ceremonias y momentos especiales.</p>
+          </article>
+          <article class="experience-card">
+            <div class="experience-visual visual-singer" aria-hidden="true"><span class="visual-number">II</span><span class="visual-motif">♫</span></div>
+            <div class="experience-info"><div><p class="card-kicker">ATMÓSFERA Y VOZ</p><h3>Singer Girl Cocktail</h3></div><span class="card-arrow" aria-hidden="true">↗</span></div>
+            <p class="card-description">Voz y música en vivo para crear una atmósfera cercana durante el encuentro.</p>
+          </article>
+          <article class="experience-card">
+            <div class="experience-visual visual-band" aria-hidden="true"><span class="visual-number">III</span><span class="visual-motif">♬</span></div>
+            <div class="experience-info"><div><p class="card-kicker">PERSONALIDAD MUSICAL</p><h3>Girl Band</h3></div><span class="card-arrow" aria-hidden="true">↗</span></div>
+            <p class="card-description">Un formato vocal e instrumental para aportar carácter a la celebración.</p>
+          </article>
+        </div>
+        <p class="content-note">Nota de desarrollo: las imágenes definitivas de estas propuestas se incorporarán únicamente con fotografías reales autorizadas de Grupo Monteverdi.</p>
+      </div>
+    </section>
+
+    <section class="story section-pad" id="historia" aria-labelledby="story-title">
+      <div class="shell story-grid">
+        <div class="story-art" aria-hidden="true"><div class="story-art-inner"><span class="story-monogram">M</span><span class="story-art-caption">MUSIC · MEMORY · MOMENTS</span></div></div>
+        <div class="story-copy"><p class="section-index">03 / NUESTRA HISTORIA</p><p class="overline">TRES HERMANOS, UNA PASIÓN</p><h2 id="story-title">La música forma parte <em>de quienes somos.</em></h2><p>Grupo Monteverdi nace de una historia compartida entre tres hermanos músicos: piano, violín y guitarra. Una trayectoria construida alrededor del estudio, la interpretación y el deseo de compartir la música en vivo.</p><p>Hoy queremos acompañar celebraciones con la misma dedicación con la que vivimos cada interpretación.</p><a class="text-link" href="#contacto">Conversemos sobre tu celebración <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </section>
+
+    <section class="contact section-pad" id="contacto" aria-labelledby="contact-title">
+      <div class="shell contact-inner"><p class="overline">TU HISTORIA MERECE SU PROPIA BANDA SONORA</p><h2 id="contact-title">Imaginemos juntos <em>ese momento.</em></h2><p>Cuéntanos cómo sueñas tu celebración. Nos encantará conversar sobre la música que podría acompañarla.</p><a class="button button-light" href="https://www.instagram.com/monteverdiservices/" target="_blank" rel="noopener noreferrer">Escríbenos en Instagram <span aria-hidden="true">↗</span></a><p class="contact-caption">Contacto provisional mediante la cuenta oficial compartida. Incorporaremos WhatsApp cuando confirmemos el enlace.</p></div>
+    </section>
+  </main>
+  <footer class="footer"><div class="shell footer-inner"><a class="footer-brand" href="#inicio">MONTEVERDI <span>WEDDING MUSIC</span></a><p>Hecho para acompañar momentos que permanecen.</p><a href="https://www.instagram.com/monteverdiservices/" target="_blank" rel="noopener noreferrer">Instagram ↗</a></div></footer>
+  <script>
+    (() => {
+      const welcome = document.getElementById('welcome');
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let seen = false;
+      try { seen = sessionStorage.getItem('monteverdi-welcome-seen') === '1'; } catch (_) {}
+      if (reduced || seen) { welcome.remove(); return; }
+      document.documentElement.classList.add('welcome-playing');
+      try { sessionStorage.setItem('monteverdi-welcome-seen', '1'); } catch (_) {}
+      const finish = () => {
+        document.documentElement.classList.remove('welcome-playing');
+        welcome.remove();
+      };
+      welcome.addEventListener('animationend', e => {
+        if (e.target === welcome) finish();
+      });
+      // Backup cleanup if the animation is interrupted by the browser.
+      window.setTimeout(finish, 4200);
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Cuéntanos tu evento y recibe una propuesta musical personalizada de Grupo Monteverdi.">
+<title>Cuéntanos tu historia | Grupo Monteverdi</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="quote-page">
+<header class="site-header"><div class="header-inner shell"><a class="brand" href="index.html"><span class="brand-name">MONTEVERDI</span><span class="brand-subtitle">MUSIC EXPERIENCES</span></a><a class="header-contact" href="index.html">← Volver al inicio</a></div></header>
+<main id="contenido">
+<section class="quote-hero shell"><p class="overline">UNA EXPERIENCIA DISEÑADA PARA TI</p><h1>Cuéntanos <em>tu historia.</em></h1><p>Los mejores momentos tienen su propia música. Comparte los detalles de tu evento y descubramos juntos cómo acompañarlo.</p></section>
+<section class="shell quote-layout" aria-label="Solicitud de propuesta musical">
+<div class="quote-aside"><span class="quote-ornament">♪</span><p class="overline">CADA DETALLE IMPORTA</p><h2>La música empieza <em>escuchándote.</em></h2><p>No necesitas elegir una agrupación todavía. Cuéntanos cómo imaginas tu celebración; nuestro equipo podrá orientarte hacia el formato musical más adecuado.</p><p class="quote-aside-note">Tu información se enviará únicamente cuando decidas abrir WhatsApp o tu aplicación de correo. Esta página no almacena tus respuestas.</p></div>
+<form id="quote-form" class="quote-form">
+<div class="quote-form-heading"><p class="section-index">01 / TU EVENTO</p><h2>Hablemos de <em>ese día especial.</em></h2></div>
+<div class="quote-fields">
+<label>Tu nombre <span aria-hidden="true">*</span><input name="nombre" autocomplete="name" maxlength="100" required placeholder="¿Cómo podemos llamarte?"></label>
+<label>Correo electrónico <span aria-hidden="true">*</span><input name="correo" type="email" autocomplete="email" maxlength="150" required placeholder="nombre@ejemplo.com"></label>
+<label>WhatsApp de contacto <span aria-hidden="true">*</span><input name="telefono" type="tel" autocomplete="tel" maxlength="30" required placeholder="+593 ..."></label>
+<label>Tipo de evento <span aria-hidden="true">*</span><select name="evento" required><option value="">Selecciona una opción</option><option>Boda</option><option>Ceremonia</option><option>Evento corporativo</option><option>Celebración institucional</option><option>Cóctel o recepción</option><option>Celebración privada</option><option>Otro evento</option></select></label>
+<label>Fecha estimada <span aria-hidden="true">*</span><input name="fecha" type="date" required></label>
+<label>Ciudad o lugar del evento <span aria-hidden="true">*</span><input name="lugar" maxlength="160" required placeholder="Ciudad, sector o establecimiento"></label>
+<label>Número aproximado de invitados<input name="invitados" type="number" min="1" max="100000" placeholder="Ej. 80"></label>
+<label>Momento musical<select name="momento"><option value="">Aún no lo sé</option><option>Ceremonia</option><option>Recepción o bienvenida</option><option>Cóctel</option><option>Cena</option><option>Celebración completa</option><option>Otro</option></select></label>
+</div>
+<label class="quote-story">Cuéntanos tu historia <span aria-hidden="true">*</span><textarea name="historia" required minlength="15" maxlength="2500" rows="6" placeholder="¿Qué estás celebrando? ¿Qué ambiente imaginas? ¿Hay alguna canción, artista o recuerdo especial que te gustaría compartir?"></textarea></label>
+<label class="quote-story">¿Tienes alguna preferencia musical?<textarea name="preferencias" maxlength="1000" rows="3" placeholder="Clásica, jazz, pop, instrumental, vocal… o déjanos sorprenderte."></textarea></label>
+<p class="quote-privacy">Al continuar, se preparará un mensaje con tus respuestas. Podrás revisarlo antes de enviarlo por WhatsApp o correo. No se enviará automáticamente.</p>
+<div class="quote-actions"><button class="button button-primary" type="submit">Preparar consulta por WhatsApp ↗</button><button class="quote-mail" type="button" id="email-quote">Prefiero enviar por correo ↗</button></div>
+</form>
+</section>
+</main>
+<footer class="footer"><div class="shell footer-inner"><a class="footer-brand" href="index.html">MONTEVERDI <span>MUSIC EXPERIENCES</span></a><p>Hecho para acompañar momentos que permanec.</p><a href="mailto:monteverdiservices@gmail.com">monteverdiservices@gmail.com ↗</a></div></footer>
+<script>
+(() => {
+const form=document.getElementById('quote-form');
+const date=form.elements.fecha;date.min=new Date(Date.now()-new Date().getTimezoneOffset()*60000).toISOString().slice(0,10);
+function message(){const f=new FormData(form);return 'Hola, Grupo Monteverdi. Me gustaría recibir una propuesta musical para mi evento.\n\n'+[['Nombre','nombre'],['Correo','correo'],['WhatsApp','telefono'],['Tipo de evento','evento'],['Fecha','fecha'],['Lugar','lugar'],['Invitados aproximados','invitados'],['Momento musical','momento'],['Nuestra historia','historia'],['Preferencias musicales','preferencias']].map(([label,key])=>label+': '+(f.get(key)||'No especificado')).join('\n')+'\n\nGracias.';}
+form.addEventListener('submit',e=>{e.preventDefault();if(!form.reportValidity())return;window.open('https://wa.me/593988282837?text='+encodeURIComponent(message()),'_blank','noopener,noreferrer');});
+document.getElementById('email-quote').addEventListener('click',()=>{if(!form.reportValidity())return;location.href='mailto:monteverdiservices@gmail.com?subject='+encodeURIComponent('Solicitud musical - Grupo Monteverdi')+'&body='+encodeURIComponent(message());});
+})();
+</script>
+</body></html>

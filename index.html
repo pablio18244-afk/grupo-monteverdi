@@ -39,6 +39,11 @@
 @keyframes welcome-exit { 0%, 5% { opacity: 1; } 100% { opacity: 0; visibility: hidden; } }
 @media (prefers-reduced-motion: reduce) { .welcome { display: none; } }
 
+
+/* Scroll reveal — understated editorial transitions */
+.scroll-reveal { opacity: 0; transform: translateY(34px); transition: opacity .85s ease, transform .85s cubic-bezier(.2,.7,.2,1); }
+.scroll-reveal.is-visible { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) { .scroll-reveal { opacity: 1; transform: none; transition: none; } }
 </style>
 </head>
 <body>
@@ -174,6 +179,18 @@
         fresh.addEventListener('animationend', e => { if (e.target === fresh) fresh.remove(); });
         window.setTimeout(() => fresh.remove(), 4300);
       });
+    })();
+  </script>
+
+  <script>
+    (() => {
+      const targets = document.querySelectorAll('.section-pad .section-index, .section-pad .overline, .section-pad h2, .section-pad .section-heading > p, .experience-card, .intro-copy, .intro-quote, .story-art, .story-copy, .contact-inner > p, .contact-inner > a');
+      if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      targets.forEach((el, i) => { el.classList.add('scroll-reveal'); if (el.classList.contains('experience-card')) el.style.transitionDelay = ((Array.from(el.parentElement.children).indexOf(el)) * 110) + 'ms'; });
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); } });
+      }, { threshold: .1, rootMargin: '0px 0px -35px 0px' });
+      targets.forEach(el => observer.observe(el));
     })();
   </script>
 </body>

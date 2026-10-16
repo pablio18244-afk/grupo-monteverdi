@@ -140,17 +140,40 @@
     (() => {
       const welcome = document.getElementById('welcome');
       const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (reduced) { welcome.remove(); return; }
+      // The intro can always be replayed manually; honor reduced motion on automatic playback only.
+      if (reduced) { welcome.remove(); }
       document.documentElement.classList.add('welcome-playing');
       const finish = () => {
         document.documentElement.classList.remove('welcome-playing');
         welcome.remove();
       };
-      welcome.addEventListener('animationend', e => {
-        if (e.target === welcome) finish();
+      if (!reduced) {
+        welcome.addEventListener('animationend', e => {
+          if (e.target === welcome) finish();
+        });
+        window.setTimeout(finish, 4200);
+      }
+      const replay = document.createElement('button');
+      replay.type = 'button';
+      replay.textContent = '↻ Ver presentación';
+      replay.setAttribute('aria-label', 'Repetir animación de entrada de Monteverdi');
+      replay.style.cssText = 'position:fixed;bottom:18px;right:18px;z-index:1100;border:1px solid #a58b69;border-radius:999px;padding:11px 16px;background:#fffdfa;color:#403a36;font:12px Segoe UI,Arial,sans-serif;cursor:pointer;box-shadow:0 5px 18px #0002';
+      document.body.appendChild(replay);
+      replay.addEventListener('click', () => {
+        const original = document.querySelector('#welcome');
+        if (original) original.remove();
+        const fresh = welcome.cloneNode(true);
+        fresh.style.display = 'grid';
+        fresh.style.animation = 'none';
+        document.body.prepend(fresh);
+        void fresh.offsetWidth;
+        fresh.style.animation = 'welcome-exit .85s cubic-bezier(.55, 0, .2, 1) 2.65s both';
+        fresh.querySelectorAll('.welcome-letters span').forEach(el => { el.style.animation = 'none'; void el.offsetWidth; el.style.animation = ''; });
+        fresh.querySelector('.welcome-rule').style.animation = 'rule-reveal .7s ease 1.65s forwards';
+        fresh.querySelector('.welcome-subtitle').style.animation = 'subtitle-reveal .8s ease 1.8s forwards';
+        fresh.addEventListener('animationend', e => { if (e.target === fresh) fresh.remove(); });
+        window.setTimeout(() => fresh.remove(), 4300);
       });
-      // Backup cleanup if the animation is interrupted by the browser.
-      window.setTimeout(finish, 4200);
     })();
   </script>
 </body>

@@ -178,3 +178,21 @@ h3 { font-size: 29px; margin-bottom: 10px; }
 @keyframes subtitle-reveal { to { opacity: 1; } }
 @keyframes welcome-exit { 0%, 5% { opacity: 1; } 100% { opacity: 0; visibility: hidden; } }
 @media (prefers-reduced-motion: reduce) { .welcome { display: none; } }
+
+/* Vignette editorial: bordes y esquinas difuminados, sin bloquear interacción */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 45% 50% at 0% 0%, rgba(248,245,240,.55), transparent 85%),
+    radial-gradient(ellipse 45% 50% at 100% 0%, rgba(248,245,240,.55), transparent 85%),
+    radial-gradient(ellipse 45% 50% at 0% 100%, rgba(248,245,240,.55), transparent 85%),
+    radial-gradient(ellipse 45% 50% at 100% 100%, rgba(248,245,240,.55), transparent 85%),
+    linear-gradient(90deg, rgba(248,245,240,.23), transparent 11%, transparent 89%, rgba(248,245,240,.23));
+}
+@media (max-width: 700px) {
+  body::after { opacity: .65; }
+}

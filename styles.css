@@ -35,7 +35,7 @@ a:focus-visible { outline: 2px solid var(--gold); outline-offset: 5px; }
 .navigation a:hover { color: var(--gold); }
 .header-contact { border-bottom: 1px solid var(--gold); padding-bottom: 8px; white-space: nowrap; }
 .header-contact span, .button span, .text-link span { margin-left: 12px; }
-.hero { position: relative; isolation: isolate; min-height: 690px; display: flex; align-items: center; overflow: hidden; background: radial-gradient(circle at 80% 43%, #f2e8dc 0, transparent 43%), linear-gradient(105deg, #f9f6f1 8%, #f4eee6 100%); }
+.hero { position: relative; isolation: isolate; min-height: 690px; display: flex; align-items: center; overflow: hidden; background: #f8f5f0; }
 .hero-content { position: relative; z-index: 2; padding-block: 115px 125px; }
 .eyebrow, .overline, .section-index, .card-kicker { font-size: 10px; font-weight: 600; letter-spacing: .23em; }
 .eyebrow { display: flex; align-items: center; gap: 17px; color: var(--gold); }

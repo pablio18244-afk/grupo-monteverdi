@@ -354,3 +354,12 @@ body::after { content:none; }
 .monteverdi-interlude svg { display:block; width:100%; height:auto; max-height:none; overflow:visible; filter:drop-shadow(0 4px 7px rgba(110,79,38,.11)); }
 .monteverdi-interlude svg path { fill:#b18a53; }
 @media(max-width:700px){.monteverdi-interlude{width:96%;min-height:65px;margin-top:62px}}
+
+/* El ornamento es parte del umbral del salón vino, no una ilustración independiente */
+.story { padding-bottom:clamp(74px,8vw,116px); }
+.contact { padding-top:clamp(88px,9vw,135px); overflow:hidden; }
+.contact .monteverdi-interlude { position:relative; z-index:1; width:min(70%,690px); min-height:0; margin:0 auto clamp(42px,5vw,70px); padding:0; background:none; }
+.contact .monteverdi-interlude svg { display:block; width:100%; height:auto; max-height:none; overflow:visible; filter:drop-shadow(0 1px 4px rgba(235,191,113,.12)); }
+.contact .monteverdi-interlude svg path { fill:#d7b778; }
+.contact .contact-inner { padding-top:0; }
+@media(max-width:700px){.contact{padding-top:76px}.contact .monteverdi-interlude{width:86%;margin-bottom:42px}.story{padding-bottom:74px}}

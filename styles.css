@@ -308,3 +308,16 @@ body::after { content:none; }
   .story .story-copy > p.story-lead {font-size:16px;line-height:1.65;}
   .story .story-dropcap {font-size:254.04834px;margin:13px 8px 0 0;}
 }
+
+/* Vestíbulo Monteverdi: tipografía editorial y reflejos de oro, sin fotografías */
+.hero .eyebrow { color:#94744c; letter-spacing:.29em; }
+.hero .eyebrow-line { width:48px; background:linear-gradient(90deg,#b69868,#e0cda7); }
+.hero #hero-title { font-family:Georgia,"Times New Roman",serif; font-weight:400; letter-spacing:-.035em; }
+.hero #hero-title em { font-family:"Pinyon Script","Times New Roman",cursive; font-style:normal; font-weight:400; font-size:clamp(63px,7.1vw,105px); line-height:.94; letter-spacing:0; color:#aa8756; display:inline-block; margin-top:12px; }
+.hero .art-ring { border-color:rgba(176,139,86,.5); }
+.hero .art-word { color:#bd9d6d; opacity:.37; }
+.hero .hero-footnote { color:#967b55; }
+.hero .tiny-diamond { color:#b18a55; }
+.hero .button-primary { background:#403a36; border-bottom:2px solid #b89765; }
+@media(max-width:700px){.hero #hero-title em {font-size:clamp(55px,11vw,78px);line-height:1.03;}}
+@media(max-width:390px){.hero #hero-title em {font-size:clamp(50px,10.8vw,66px);}}

@@ -274,10 +274,10 @@ body::after { content:none; }
 .story .story-dropcap {
   float:left;
   font-family:"Bodoni MT","Didot","Times New Roman",serif;
-  font-size:clamp(106px,10vw,156px);
+  font-size:clamp(78px,7.2vw,108px);
   font-weight:400;
   line-height:.74;
-  margin:13px 14px 0 0;
+  margin:10px 12px 0 0;
   color:var(--gold);
 }
 .story .story-copy > p:not(.story-lead):not(.section-index):not(.overline) {
@@ -291,9 +291,9 @@ body::after { content:none; }
 @media(max-width:900px){
   .story .story-grid {grid-template-columns:1fr;gap:42px;}
   .story .story-copy > p.story-lead {font-size:clamp(24px,4.4vw,34px);}
-  .story .story-dropcap {font-size:clamp(102px,15vw,148px);}
+  .story .story-dropcap {font-size:clamp(78px,10vw,104px);}
 }
 @media(max-width:480px){
   .story .story-copy > p.story-lead {font-size:23px;line-height:1.42;}
-  .story .story-dropcap {font-size:104px;margin:10px 12px 0 0;}
+  .story .story-dropcap {font-size:78px;margin:8px 10px 0 0;}
 }

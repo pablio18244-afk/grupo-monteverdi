@@ -264,21 +264,21 @@ body::after { content:none; }
 .story .story-copy > p.story-lead {
   display:flow-root;
   font-family:Georgia,"Times New Roman",serif;
-  font-size:clamp(17px,1.45vw,20px);
+  font-size:clamp(16px,1.3vw,18px);
   font-weight:400;
-  line-height:1.42;
-  letter-spacing:-.018em;
+  line-height:1.7;
+  letter-spacing:0;
   color:var(--ink);
   margin:0 0 38px;
 }
 .story .story-dropcap {
   float:left;
-  font-family:"Baskerville","Baskerville Old Face","Palatino Linotype","Book Antiqua",Georgia,serif;
-  font-style:italic;
-  font-size:clamp(98px,8.4vw,128px);
+  font-family:Georgia,"Times New Roman",serif;
+  font-style:normal;
+  font-size:clamp(70px,6.5vw,84px);
   font-weight:400;
-  line-height:.86;
-  margin:5px 13px 0 0;
+  line-height:.78;
+  margin:8px 10px 0 0;
   color:var(--gold);
 }
 .story .story-copy > p:not(.story-lead):not(.section-index):not(.overline) {
@@ -291,10 +291,10 @@ body::after { content:none; }
 .story .story-copy > p strong {font-family:Georgia,"Times New Roman",serif;font-weight:400;font-style:italic;font-size:1.14em;color:var(--ink);}
 @media(max-width:900px){
   .story .story-grid {grid-template-columns:1fr;gap:42px;}
-  .story .story-copy > p.story-lead {font-size:clamp(17px,2.5vw,20px);}
-  .story .story-dropcap {font-size:clamp(98px,12vw,122px);}
+  .story .story-copy > p.story-lead {font-size:clamp(16px,2.2vw,18px);}
+  .story .story-dropcap {font-size:clamp(70px,9vw,84px);}
 }
 @media(max-width:480px){
-  .story .story-copy > p.story-lead {font-size:17px;line-height:1.55;}
-  .story .story-dropcap {font-size:98px;margin:5px 11px 0 0;}
+  .story .story-copy > p.story-lead {font-size:16px;line-height:1.65;}
+  .story .story-dropcap {font-size:70px;margin:7px 9px 0 0;}
 }

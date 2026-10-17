@@ -96,7 +96,7 @@ h3 { font-size: 29px; margin-bottom: 10px; }
 .card-arrow { font-size: 24px; color: #2C5464; }
 .card-description { color: var(--muted); font-size: 13px; line-height: 1.8; max-width: 310px; }
 .content-note { margin: 30px 0 0; font-size: 11px; color: var(--taupe); line-height: 1.8; }
-.story { background: linear-gradient(180deg, #f1e9e8 0%, #faf4f1 28%, #faf4f1 68%, #f1e2df 100%); }
+.story { background: linear-gradient(180deg, #f1e9e8 0%, #faf4f1 28%, #faf4f1 75%, #f5ece8 100%); }
 .story-grid { display: grid; grid-template-columns: .95fr 1.05fr; gap: clamp(60px, 9vw, 150px); align-items: center; }
 .story-art { min-height: 525px; background: linear-gradient(145deg, #e9dcd9, #e5d5d0); padding: 34px; }
 .story-art-inner { height: 100%; min-height: 457px; border: 1px solid #fff9; display: flex; flex-direction: column; justify-content: center; align-items: center; }
@@ -106,7 +106,7 @@ h3 { font-size: 29px; margin-bottom: 10px; }
 .story-copy > p:not(.section-index):not(.overline) { font-size: 14px; line-height: 2; color: var(--muted); }
 .text-link { display: inline-block; border-bottom: 1px solid var(--gold); padding-bottom: 10px; margin-top: 18px; font-size: 12px; }
 .contact { position: relative; text-align: center; background: #591415; color: #fffaf4; }
-.contact::before { content: ""; position: absolute; inset: 0 0 auto; height: 92px; pointer-events: none; background: linear-gradient(180deg, #f1e2df 0%, #a66f70 42%, #591415 100%); }
+.contact::before { content: ""; position: absolute; inset: 0 0 auto; height: 1px; pointer-events: none; background: linear-gradient(90deg, transparent 7%, rgba(214,185,141,.2) 24%, rgba(226,202,162,.82) 50%, rgba(214,185,141,.2) 76%, transparent 93%); }
 .contact .contact-inner { position: relative; z-index: 1; }
 .contact .overline { color: #BEBBBC; }
 .contact h2 { max-width: 800px; margin-inline: auto; }

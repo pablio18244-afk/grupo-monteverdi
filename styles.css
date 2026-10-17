@@ -35,7 +35,7 @@ a:focus-visible { outline: 2px solid var(--gold); outline-offset: 5px; }
 .navigation a:hover { color: var(--gold); }
 .header-contact { border-bottom: 1px solid var(--gold); padding-bottom: 8px; white-space: nowrap; }
 .header-contact span, .button span, .text-link span { margin-left: 12px; }
-.hero { position: relative; isolation: isolate; min-height: 690px; display: flex; align-items: center; overflow: hidden; background: #f8f5f0; }
+.hero { position: relative; isolation: isolate; min-height: 690px; display: flex; align-items: center; overflow: hidden; background: radial-gradient(ellipse at 76% 43%, rgba(216,200,178,.27) 0%, rgba(216,200,178,.09) 34%, transparent 65%), linear-gradient(180deg, #fffdfa 0%, #f8f5f0 72%, #f8f5f0 100%); }
 .hero-content { position: relative; z-index: 2; padding-block: 115px 125px; }
 .eyebrow, .overline, .section-index, .card-kicker { font-size: 10px; font-weight: 600; letter-spacing: .23em; }
 .eyebrow { display: flex; align-items: center; gap: 17px; color: var(--gold); }
@@ -52,8 +52,8 @@ h1 em, h2 em { font-weight: 400; color: var(--gold); }
 .hero-footnote { margin-top: 93px; font-size: 9px; letter-spacing: .24em; color: var(--taupe); }
 .tiny-diamond { font-size: 19px; margin-right: 12px; }
 .hero-side-label { position: absolute; right: 25px; bottom: 65px; writing-mode: vertical-rl; font-size: 9px; letter-spacing: .3em; color: #ad9c89; }
-.hero-art { position: absolute; right: -7%; top: 4%; width: 55%; height: 100%; opacity: .55; pointer-events: none; }
-.art-ring { position: absolute; border: 1px solid #cdbca6; border-radius: 50%; aspect-ratio: 1; }
+.hero-art { position: absolute; right: -7%; top: 4%; width: 55%; height: 100%; opacity: .38; pointer-events: none; }
+.art-ring { position: absolute; border: 1px solid #c8b79f; border-radius: 50%; aspect-ratio: 1; }
 .art-ring-one { width: 620px; right: -50px; top: -65px; }
 .art-ring-two { width: 450px; right: 38px; top: 18px; }
 .art-stem { position: absolute; height: 680px; width: 1px; background: #cdbca6; transform: rotate(32deg); right: 39%; top: -90px; }
@@ -105,7 +105,9 @@ h3 { font-size: 29px; margin-bottom: 10px; }
 .story-copy h2 { margin-bottom: 30px; }
 .story-copy > p:not(.section-index):not(.overline) { font-size: 14px; line-height: 2; color: var(--muted); }
 .text-link { display: inline-block; border-bottom: 1px solid var(--gold); padding-bottom: 10px; margin-top: 18px; font-size: 12px; }
-.contact { text-align: center; background: #591415; color: #fffaf4; }
+.contact { position: relative; text-align: center; background: #591415; color: #fffaf4; }
+.contact::before { content: ""; position: absolute; inset: 0 0 auto; height: 92px; pointer-events: none; background: linear-gradient(180deg, #f1e2df 0%, #a66f70 42%, #591415 100%); }
+.contact .contact-inner { position: relative; z-index: 1; }
 .contact .overline { color: #BEBBBC; }
 .contact h2 { max-width: 800px; margin-inline: auto; }
 .contact h2 em { color: #e6d0b4; }

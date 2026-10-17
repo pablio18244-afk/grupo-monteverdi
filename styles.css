@@ -258,3 +258,15 @@ body::after {
 .monteverdi-footer .footer-social-icons svg {width:19px;height:19px;}
 .monteverdi-footer .footer-social-note {margin:3px 0 0;line-height:1.65;}
 @media(max-width:750px){.monteverdi-footer .monteverdi-footer-grid {row-gap:34px;}}
+
+/* Contact row spacing and recognizable brand marks */
+.monteverdi-footer .footer-contact-column {gap:0;}
+.monteverdi-footer .footer-contact-list {display:flex;flex-direction:column;align-items:stretch;gap:22px;width:100%;margin-top:9px;}
+.monteverdi-footer .footer-contact-list .footer-contact-link {display:grid;grid-template-columns:28px minmax(0,1fr);column-gap:16px;align-items:center;min-height:28px;width:100%;margin:0;padding:0;line-height:1.5;}
+.monteverdi-footer .footer-contact-link img {width:23px;height:23px;display:block;object-fit:contain;justify-self:center;}
+.monteverdi-footer .footer-contact-list .footer-contact-link span {font-size:13px;line-height:1.55;overflow-wrap:anywhere;}
+.monteverdi-footer .footer-quote-link {display:inline-block;margin-top:25px;}
+.monteverdi-footer .footer-social-icons {gap:22px;margin-top:10px;}
+.monteverdi-footer .footer-social-icons a {width:48px;height:48px;flex-basis:48px;}
+.monteverdi-footer .footer-social-note {margin-top:15px;}
+@media(max-width:480px){.monteverdi-footer .footer-social-icons{gap:20px;}.monteverdi-footer .footer-contact-list{gap:20px;}}

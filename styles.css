@@ -275,7 +275,7 @@ body::after { content:none; }
   float:left;
   font-family:"Pinyon Script","Times New Roman",cursive;
   font-style:normal;
-  font-size:clamp(138px,11.7vw,164px);
+  font-size:clamp(164.22px,13.923vw,195.16px);
   font-weight:400;
   line-height:.68;
   margin:15px 9px 0 0;
@@ -292,9 +292,9 @@ body::after { content:none; }
 @media(max-width:900px){
   .story .story-grid {grid-template-columns:1fr;gap:42px;}
   .story .story-copy > p.story-lead {font-size:clamp(16px,2.2vw,18px);}
-  .story .story-dropcap {font-size:clamp(138px,17vw,164px);}
+  .story .story-dropcap {font-size:clamp(164.22px,20.23vw,195.16px);}
 }
 @media(max-width:480px){
   .story .story-copy > p.story-lead {font-size:16px;line-height:1.65;}
-  .story .story-dropcap {font-size:138px;margin:13px 8px 0 0;}
+  .story .story-dropcap {font-size:164.22px;margin:13px 8px 0 0;}
 }

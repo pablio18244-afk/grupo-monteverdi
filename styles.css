@@ -256,3 +256,29 @@ body::after { content:none; }
 .monteverdi-footer .footer-social-icons a {width:48px;height:48px;flex-basis:48px;}
 .monteverdi-footer .footer-social-note {margin-top:15px;}
 @media(max-width:480px){.monteverdi-footer .footer-social-icons{gap:20px;}.monteverdi-footer .footer-contact-list{gap:20px;}}
+
+/* Quiénes somos — magazine editorial lead, intentionally scoped */
+.story .story-grid {align-items:start;}
+.story .story-copy {max-width:760px;}
+.story .story-copy > p.story-lead {
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(27px,3.05vw,46px);
+  font-weight:400;
+  line-height:1.28;
+  letter-spacing:-.025em;
+  color:var(--ink);
+  margin:8px 0 38px;
+  text-wrap:pretty;
+}
+.story .story-copy > p.story-lead::first-letter {
+  font-size:1.4em;
+  color:var(--gold);
+}
+.story .story-copy > p:not(.story-lead):not(.section-index):not(.overline) {
+  font-size:clamp(14px,1.2vw,16px);
+  line-height:1.95;
+}
+.story .story-copy h2 {margin-bottom:36px;}
+@media(max-width:800px){
+  .story .story-copy > p.story-lead {font-size:clamp(26px,5.4vw,39px);margin-bottom:30px;}
+}

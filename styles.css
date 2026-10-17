@@ -278,6 +278,8 @@ body::after { content:none; }
   font-weight:400;
   line-height:.86;
   margin:-31px 13px -2px 0;
+  shape-outside:polygon(0 0,100% 0,100% 40%,70% 52%,0 52%);
+  shape-margin:1px;
   color:var(--gold);
 }
 .story .story-copy > p:not(.story-lead):not(.section-index):not(.overline) {

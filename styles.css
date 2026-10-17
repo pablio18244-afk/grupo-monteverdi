@@ -321,3 +321,13 @@ body::after { content:none; }
 .hero .button-primary { background:#403a36; border-bottom:2px solid #b89765; }
 @media(max-width:700px){.hero #hero-title em {font-size:clamp(55px,11vw,78px);line-height:1.03;}}
 @media(max-width:390px){.hero #hero-title em {font-size:clamp(50px,10.8vw,66px);}}
+
+/* Segunda capa de elegancia: detalles de orfebrería editorial en el vestíbulo */
+.hero .hero-content::before { content:"✦"; display:block; width:max-content; margin:0 0 22px 0; font-size:15px; line-height:1; color:#bb9a69; text-shadow:0 0 16px rgba(187,154,105,.24); }
+.hero #hero-title { position:relative; }
+.hero #hero-title::after { content:""; display:block; width:126px; height:1px; margin-top:30px; background:linear-gradient(90deg,#a78351 0%,#d9c39d 62%,transparent 100%); }
+.hero .hero-description { max-width:425px; color:#6c625b; }
+.hero .hero-footnote { display:flex; align-items:center; gap:12px; }
+.hero .hero-footnote::after { content:""; display:inline-block; width:68px; height:1px; background:linear-gradient(90deg,rgba(177,138,85,.7),transparent); }
+.hero .art-word { font-family:"Pinyon Script","Times New Roman",cursive; font-style:normal; font-size:clamp(270px,27vw,430px); color:#b89560; opacity:.33; transform:rotate(-9deg); }
+@media(max-width:700px){.hero .hero-content::before{margin-bottom:16px}.hero #hero-title::after{margin-top:22px}.hero .art-word{font-size:290px;}}

@@ -106,7 +106,7 @@ h3 { font-size: 29px; margin-bottom: 10px; }
 .story-copy > p:not(.section-index):not(.overline) { font-size: 14px; line-height: 2; color: var(--muted); }
 .text-link { display: inline-block; border-bottom: 1px solid var(--gold); padding-bottom: 10px; margin-top: 18px; font-size: 12px; }
 .contact { position: relative; text-align: center; background: #591415; color: #fffaf4; }
-.contact::before { content: ""; position: absolute; inset: 0 0 auto; height: 1px; pointer-events: none; background: linear-gradient(90deg, transparent 7%, rgba(214,185,141,.2) 24%, rgba(226,202,162,.82) 50%, rgba(214,185,141,.2) 76%, transparent 93%); }
+.contact::before { content:""; position:absolute; inset:0 0 auto; height:1px; pointer-events:none; background:linear-gradient(90deg,transparent 8%,rgba(221,194,150,.25) 24%,#d9bc8b 50%,rgba(221,194,150,.25) 76%,transparent 92%); }
 .contact .contact-inner { position: relative; z-index: 1; }
 .contact .overline { color: #BEBBBC; }
 .contact h2 { max-width: 800px; margin-inline: auto; }
@@ -331,3 +331,11 @@ body::after { content:none; }
 .hero .hero-footnote::after { content:""; display:inline-block; width:68px; height:1px; background:linear-gradient(90deg,rgba(177,138,85,.7),transparent); }
 .hero .art-word { font-family:"Pinyon Script","Times New Roman",cursive; font-style:normal; font-size:clamp(270px,27vw,430px); color:#b89560; opacity:.33; transform:rotate(-9deg); }
 @media(max-width:700px){.hero .hero-content::before{margin-bottom:16px}.hero #hero-title::after{margin-top:22px}.hero .art-word{font-size:290px;}}
+
+/* Interludio entre movimientos: separación arquitectónica, sin difuminado */
+.story { position:relative; padding-bottom:clamp(130px,13vw,205px); }
+.story::after { content:""; position:absolute; left:50%; bottom:53px; width:clamp(110px,17vw,210px); height:1px; transform:translateX(-50%); background:linear-gradient(90deg,transparent,#b79566 26%,#b79566 74%,transparent); opacity:.68; }
+.contact { isolation:isolate; }
+.contact::after { content:"✧"; position:absolute; left:50%; top:0; transform:translate(-50%,-50%); width:44px; height:44px; display:grid; place-items:center; border:1px solid rgba(214,183,135,.6); border-radius:50%; background:#591415; color:#e5c99b; font-family:Georgia,serif; font-size:21px; line-height:1; z-index:2; pointer-events:none; }
+.contact .contact-inner { padding-top:clamp(18px,3vw,40px); }
+@media(max-width:700px){.story{padding-bottom:115px}.story::after{bottom:43px}.contact::after{width:36px;height:36px;font-size:18px}}

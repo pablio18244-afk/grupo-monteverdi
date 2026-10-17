@@ -339,3 +339,6 @@ body::after { content:none; }
 .contact::after { content:none; }
 .contact .contact-inner { padding-top:clamp(18px,3vw,40px); }
 @media(max-width:700px){.story{padding-bottom:115px}.story::after{bottom:43px}.contact::after{width:36px;height:36px;font-size:18px}}
+
+/* Retirada completa de los adornos del umbral entre historia y contacto */
+.story::after, .contact::before, .contact::after { content:none !important; display:none !important; }

@@ -348,3 +348,9 @@ body::after { content:none; }
 .contact::after { content:none; }
 .contact .contact-inner { padding-top:0; }
 @media(max-width:700px){.story{padding-bottom:56px}.monteverdi-interlude{width:88%;margin-top:72px}.monteverdi-interlude img{max-height:110px}}
+
+/* Ornamento integrado directamente: visible sin depender de carga de imagen externa */
+.monteverdi-interlude { width:min(90%,1040px); margin:clamp(68px,8vw,110px) auto 0; min-height:130px; }
+.monteverdi-interlude svg { display:block; width:100%; height:auto; max-height:none; overflow:visible; filter:drop-shadow(0 4px 7px rgba(110,79,38,.11)); }
+.monteverdi-interlude svg path { fill:#b18a53; }
+@media(max-width:700px){.monteverdi-interlude{width:96%;min-height:65px;margin-top:62px}}

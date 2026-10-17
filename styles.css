@@ -273,13 +273,12 @@ body::after { content:none; }
 }
 .story .story-dropcap {
   float:left;
-  font-family:"Bodoni MT","Didot","Times New Roman",serif;
+  font-family:"Baskerville","Baskerville Old Face","Palatino Linotype","Book Antiqua",Georgia,serif;
+  font-style:italic;
   font-size:clamp(98px,8.4vw,128px);
   font-weight:400;
   line-height:.86;
-  margin:-31px 13px -2px 0;
-  shape-outside:polygon(0 0,100% 0,100% 40%,70% 52%,0 52%);
-  shape-margin:1px;
+  margin:5px 13px 0 0;
   color:var(--gold);
 }
 .story .story-copy > p:not(.story-lead):not(.section-index):not(.overline) {
@@ -297,5 +296,5 @@ body::after { content:none; }
 }
 @media(max-width:480px){
   .story .story-copy > p.story-lead {font-size:17px;line-height:1.55;}
-  .story .story-dropcap {font-size:98px;margin:-26px 11px -2px 0;}
+  .story .story-dropcap {font-size:98px;margin:5px 11px 0 0;}
 }

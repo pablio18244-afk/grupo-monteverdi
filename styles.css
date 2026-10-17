@@ -264,7 +264,7 @@ body::after { content:none; }
 .story .story-copy > p.story-lead {
   display:flow-root;
   font-family:Georgia,"Times New Roman",serif;
-  font-size:clamp(22px,2.15vw,33px);
+  font-size:clamp(17px,1.45vw,20px);
   font-weight:400;
   line-height:1.42;
   letter-spacing:-.018em;
@@ -276,8 +276,8 @@ body::after { content:none; }
   font-family:"Bodoni MT","Didot","Times New Roman",serif;
   font-size:clamp(98px,8.4vw,128px);
   font-weight:400;
-  line-height:1.18;
-  margin:-35px 13px 0 0;
+  line-height:.86;
+  margin:-31px 13px -2px 0;
   color:var(--gold);
 }
 .story .story-copy > p:not(.story-lead):not(.section-index):not(.overline) {
@@ -290,10 +290,10 @@ body::after { content:none; }
 .story .story-copy > p strong {font-family:Georgia,"Times New Roman",serif;font-weight:400;font-style:italic;font-size:1.14em;color:var(--ink);}
 @media(max-width:900px){
   .story .story-grid {grid-template-columns:1fr;gap:42px;}
-  .story .story-copy > p.story-lead {font-size:clamp(24px,4.4vw,34px);}
+  .story .story-copy > p.story-lead {font-size:clamp(17px,2.5vw,20px);}
   .story .story-dropcap {font-size:clamp(98px,12vw,122px);}
 }
 @media(max-width:480px){
-  .story .story-copy > p.story-lead {font-size:23px;line-height:1.42;}
-  .story .story-dropcap {font-size:98px;margin:-26px 11px 0 0;}
+  .story .story-copy > p.story-lead {font-size:17px;line-height:1.55;}
+  .story .story-dropcap {font-size:98px;margin:-26px 11px -2px 0;}
 }

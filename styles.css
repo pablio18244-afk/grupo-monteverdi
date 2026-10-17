@@ -60,7 +60,7 @@ h1 em, h2 em { font-weight: 400; color: var(--gold); }
 .art-word { position: absolute; right: 190px; top: 170px; font: italic 240px/1 var(--serif); color: #d3c0a9; opacity: .27; }
 .section-pad { padding-block: 112px; }
 .section-index { color: var(--gold); }
-.intro { background: #f4f3f0; }
+.intro { background: linear-gradient(180deg, #f8f5f0 0%, #f4f3f0 48%, #eef0ef 100%); }
 .intro-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 60px; }
 .overline { color: var(--gold); margin-bottom: 24px; }
 h2 { font-size: clamp(35px, 3.8vw, 56px); line-height: 1.25; letter-spacing: -.035em; }
@@ -69,10 +69,15 @@ h2 { font-size: clamp(35px, 3.8vw, 56px); line-height: 1.25; letter-spacing: -.0
 .signature-rule { display: flex; align-items: center; gap: 18px; margin-top: 35px; color: var(--gold); font-size: 10px; letter-spacing: .25em; }
 .signature-rule::after { content: ''; height: 1px; width: 100px; background: #BEBBBC; }
 .signature-rule span:first-child { font-size: 20px; }
-.experiences { background: #e9edf0; }
+.experiences { background: linear-gradient(180deg, #eef0ef 0%, #e9edf0 30%, #e9edf0 72%, #f1e9e8 100%); }
 .experiences .section-index, .experiences .overline, .experiences .card-kicker { color: #2C5464; }
 .experiences .section-heading h2 em { color: #2C5464; }
+.experiences .experience-info h3 { color: #403a36; }
+.experiences .experience-visual::before { border-color: rgba(255,250,244,.48); }
+.experiences .experience-visual::after { border-color: rgba(216,200,178,.55); }
 .story .section-index { color: #591415; }
+.story .story-art-inner { border-color: rgba(255,250,244,.78); }
+.story .story-copy h2 em { color: var(--gold); }
 .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 60px; margin-bottom: 48px; }
 .section-heading h2 { max-width: 680px; margin-bottom: 0; }
 .section-heading > p { max-width: 285px; font-size: 13px; line-height: 1.9; color: var(--muted); }
@@ -91,9 +96,9 @@ h3 { font-size: 29px; margin-bottom: 10px; }
 .card-arrow { font-size: 24px; color: #2C5464; }
 .card-description { color: var(--muted); font-size: 13px; line-height: 1.8; max-width: 310px; }
 .content-note { margin: 30px 0 0; font-size: 11px; color: var(--taupe); line-height: 1.8; }
-.story { background: #faf4f1; }
+.story { background: linear-gradient(180deg, #f1e9e8 0%, #faf4f1 28%, #faf4f1 68%, #f1e2df 100%); }
 .story-grid { display: grid; grid-template-columns: .95fr 1.05fr; gap: clamp(60px, 9vw, 150px); align-items: center; }
-.story-art { min-height: 525px; background: #e9dcd9; padding: 34px; }
+.story-art { min-height: 525px; background: linear-gradient(145deg, #e9dcd9, #e5d5d0); padding: 34px; }
 .story-art-inner { height: 100%; min-height: 457px; border: 1px solid #fff9; display: flex; flex-direction: column; justify-content: center; align-items: center; }
 .story-monogram { font: italic 210px/.9 var(--serif); color: #9d7775; }
 .story-art-caption { margin-top: 70px; font-size: 9px; letter-spacing: .25em; color: #591415; }

@@ -179,21 +179,9 @@ h3 { font-size: 29px; margin-bottom: 10px; }
 @keyframes welcome-exit { 0%, 5% { opacity: 1; } 100% { opacity: 0; visibility: hidden; } }
 @media (prefers-reduced-motion: reduce) { .welcome { display: none; } }
 
-/* Velo editorial tenue: esquinas definidas sin lavar el contenido */
-body::after {
-  content:"";
-  position:fixed;
-  inset:0;
-  z-index:900;
-  pointer-events:none;
-  background:
-    radial-gradient(ellipse 31% 37% at 0% 0%, rgba(248,245,240,.27), transparent 78%),
-    radial-gradient(ellipse 31% 37% at 100% 0%, rgba(248,245,240,.27), transparent 78%),
-    radial-gradient(ellipse 31% 37% at 0% 100%, rgba(248,245,240,.27), transparent 78%),
-    radial-gradient(ellipse 31% 37% at 100% 100%, rgba(248,245,240,.27), transparent 78%),
-    linear-gradient(90deg,rgba(248,245,240,.085),transparent 7%,transparent 93%,rgba(248,245,240,.085));
-}
-@media(max-width:700px){body::after{opacity:.78;}}
+/* Acabado editorial uniforme: sin velo fijo ni esquinas blanqueadas.
+   La elegancia se mantiene mediante la paleta, tipografía y espacios. */
+body::after { content:none; }
 
 /* Redes y contacto — pie editorial */
 .monteverdi-footer { padding-top: 60px; }

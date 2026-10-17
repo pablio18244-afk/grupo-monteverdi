@@ -339,3 +339,12 @@ body::after { content:none; }
 .contact::after { content:"✧"; position:absolute; left:50%; top:0; transform:translate(-50%,-50%); width:44px; height:44px; display:grid; place-items:center; border:1px solid rgba(214,183,135,.6); border-radius:50%; background:#591415; color:#e5c99b; font-family:Georgia,serif; font-size:21px; line-height:1; z-index:2; pointer-events:none; }
 .contact .contact-inner { padding-top:clamp(18px,3vw,40px); }
 @media(max-width:700px){.story{padding-bottom:115px}.story::after{bottom:43px}.contact::after{width:36px;height:36px;font-size:18px}}
+
+/* Ornamento de la casa: interludio entre identidad y salón burdeos */
+.story { padding-bottom:clamp(54px,7vw,100px); }
+.story::after { content:none; }
+.monteverdi-interlude { width:min(78%,790px); margin:clamp(75px,10vw,138px) auto 0; display:flex; justify-content:center; align-items:center; }
+.monteverdi-interlude img { display:block; width:100%; height:auto; max-height:160px; object-fit:contain; opacity:.82; filter:drop-shadow(0 3px 9px rgba(128,90,44,.09)); }
+.contact::after { content:none; }
+.contact .contact-inner { padding-top:0; }
+@media(max-width:700px){.story{padding-bottom:56px}.monteverdi-interlude{width:88%;margin-top:72px}.monteverdi-interlude img{max-height:110px}}

@@ -26,80 +26,6 @@
 .scroll-reveal.is-visible { opacity: 1; transform: translateY(0); }
 @media (prefers-reduced-motion: reduce) { .scroll-reveal { opacity: 1; transform: none; transition: none; } }
 
-/* Cierre musical: entrada escalonada, cálida, sin parpadeos */
-.contact .contact-inner > .scroll-reveal {
-  opacity: 0;
-  transform: translate3d(0, 25px, 0);
-  filter: blur(2.4px);
-  transition-property: opacity, transform, filter;
-  transition-duration: 1.05s, 1.22s, 1.05s;
-  transition-timing-function: ease-out, cubic-bezier(.2,.75,.2,1), ease-out;
-  transition-delay: var(--contact-reveal-delay, 0ms);
-  will-change: opacity, transform;
-}
-.contact .contact-inner > .scroll-reveal.is-visible {
-  opacity: 1;
-  transform: translate3d(0, 0, 0);
-  filter: blur(0);
-}
-.contact .contact-inner > .overline.scroll-reveal { --contact-reveal-delay: 0ms; }
-.contact .contact-inner > h2.scroll-reveal { --contact-reveal-delay: 100ms; }
-.contact .contact-inner > p:not(.overline):not(.contact-caption).scroll-reveal { --contact-reveal-delay: 220ms; }
-.contact .contact-inner > a.scroll-reveal { --contact-reveal-delay: 310ms; }
-.contact .contact-inner > .contact-caption.scroll-reveal { --contact-reveal-delay: 420ms; }
-@media (prefers-reduced-motion: reduce) {
-  .contact .contact-inner > .scroll-reveal,
-  .contact .contact-inner > .scroll-reveal.is-visible {
-    opacity: 1; transform: none; filter: none; transition: none; will-change: auto;
-  }
-}
-
-/* Portada: entrada delicada tras el calderón y al regresar a la cabecera.
-   Solo interviene en la sección hero; no afecta ni al intro ni al scroll de las demás secciones. */
-.hero.hero-motion .hero-content > .eyebrow,
-.hero.hero-motion .hero-content > #hero-title,
-.hero.hero-motion .hero-content > .hero-description,
-.hero.hero-motion .hero-content > .button-primary,
-.hero.hero-motion .hero-content > .hero-footnote {
-  opacity: 0;
-  transform: translate3d(0, 23px, 0);
-  filter: blur(1.6px);
-  transition: opacity 1.12s ease, transform 1.22s cubic-bezier(.2,.75,.2,1), filter .97s ease;
-  transition-delay: var(--hero-stage-delay, 0ms);
-}
-.hero.hero-motion.is-awake .hero-content > .eyebrow,
-.hero.hero-motion.is-awake .hero-content > #hero-title,
-.hero.hero-motion.is-awake .hero-content > .hero-description,
-.hero.hero-motion.is-awake .hero-content > .button-primary,
-.hero.hero-motion.is-awake .hero-content > .hero-footnote {
-  opacity: 1; transform: translate3d(0,0,0); filter: blur(0);
-}
-.hero.hero-motion .hero-content > .eyebrow { --hero-stage-delay: 0ms; }
-.hero.hero-motion .hero-content > #hero-title { --hero-stage-delay: 130ms; }
-.hero.hero-motion .hero-content > .hero-description { --hero-stage-delay: 300ms; }
-.hero.hero-motion .hero-content > .button-primary { --hero-stage-delay: 460ms; }
-.hero.hero-motion .hero-content > .hero-footnote { --hero-stage-delay: 580ms; }
-.hero.hero-motion.is-awake .hero-content > .button-primary:hover { transform: translate3d(0,-3px,0); }
-.hero.hero-motion .hero-art {
-  opacity: .07;
-  transform: translate3d(14px,0,0) scale(1.025);
-  transition: opacity 1.85s ease, transform 2.1s cubic-bezier(.2,.75,.2,1);
-}
-.hero.hero-motion.is-awake .hero-art { opacity: .38; transform: none; }
-@media(max-width:700px) {
-  .hero.hero-motion.is-awake .hero-art { opacity: .25; }
-}
-@media(prefers-reduced-motion:reduce) {
-  .hero.hero-motion .hero-content > .eyebrow,
-  .hero.hero-motion .hero-content > #hero-title,
-  .hero.hero-motion .hero-content > .hero-description,
-  .hero.hero-motion .hero-content > .button-primary,
-  .hero.hero-motion .hero-content > .hero-footnote,
-  .hero.hero-motion .hero-art {
-    opacity: 1; transform: none; filter: none; transition: none;
-  }
-}
-
 /* Identidad institucional — misión y visión */
 .monteverdi-values { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(22px,4vw,64px); margin-top:clamp(48px,7vw,100px); }
 .monteverdi-value { border-top:1px solid var(--gold); padding-top:28px; }
@@ -275,100 +201,13 @@
 
   <script>
     (() => {
-      const hero = document.getElementById('inicio');
-      const title = document.getElementById('hero-title');
-      if (!hero || !title || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      // La portada no estaba incluida en las animaciones de scroll.
-      // Actuar sobre toda la frase musical y no sobre elementos en el borde.
-      hero.classList.add('hero-motion');
-      let ready = false;
-      let armed = true;
-      let sequence = 0;
-      let queued = false;
-      const titleVisible = () => {
-        const r = title.getBoundingClientRect();
-        return r.bottom > window.innerHeight * .12 && r.top < window.innerHeight * .82;
-      };
-      const reveal = () => {
-        if (ready && armed && titleVisible()) {
-          hero.classList.add('is-awake');
-          armed = false;
-        }
-      };
-      const rearm = () => {
-        queued = false;
-        const r = title.getBoundingClientRect();
-        // No rearmar en el umbral de intersección: exige salir por completo
-        // y añade 120 px de seguridad para impedir bucles estando quieto.
-        if (!armed && (r.bottom < -120 || r.top > window.innerHeight + 120)) {
-          hero.classList.remove('is-awake');
-          armed = true;
-        }
-        reveal();
-      };
-      const scheduleAfterIntro = () => {
-        const current = ++sequence;
-        ready = false;
-        armed = true;
-        hero.classList.remove('is-awake');
-        window.setTimeout(() => {
-          if (current !== sequence) return;
-          ready = true;
-          reveal();
-        }, 6980);
-      };
-      if (document.getElementById('welcome')) scheduleAfterIntro();
-      else { ready = true; reveal(); }
-      window.addEventListener('scroll', () => {
-        if (queued) return;
-        queued = true;
-        window.requestAnimationFrame(rearm);
-      }, { passive: true });
-      window.addEventListener('resize', () => {
-        if (!queued) { queued = true; window.requestAnimationFrame(rearm); }
-      }, { passive: true });
-      // El botón existente de repetición debe volver a ejecutar esta frase,
-      // sin alterar un solo fotograma de MONTEVERDI.
-      document.querySelector('button[aria-label="Repetir presentación de Grupo Monteverdi"]')
-        ?.addEventListener('click', scheduleAfterIntro);
-    })();
-  </script>
-
-  <script>
-    (() => {
       const targets = document.querySelectorAll('.section-pad .section-index, .section-pad .overline, .section-pad h2, .section-pad .section-heading > p, .experience-card, .intro-copy, .intro-quote, .story-art, .story-copy, .contact-inner > p, .contact-inner > a');
       if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       targets.forEach((el, i) => { el.classList.add('scroll-reveal'); if (el.classList.contains('experience-card')) el.style.transitionDelay = ((Array.from(el.parentElement.children).indexOf(el)) * 110) + 'ms'; });
-      // Conservar la magia: revelar de nuevo cuando el usuario regresa.
-      // Nunca ocultar un elemento en el borde del viewport: su propia
-      // transición (translateY) podría provocar oscilaciones y parpadeos.
       const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) entry.target.classList.add('is-visible');
-        });
+        entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); } else { entry.target.classList.remove('is-visible'); } });
       }, { threshold: .1, rootMargin: '0px 0px -35px 0px' });
       targets.forEach(el => observer.observe(el));
-
-      // Rearmar la entrada solamente cuando se haya desplazado completamente
-      // fuera de pantalla, con 90 px de margen de seguridad (histéresis).
-      // Así cada regreso reproduce la animación sin bucles estando quieto.
-      let queued = false;
-      const rearmOffscreen = () => {
-        queued = false;
-        const viewportHeight = window.innerHeight;
-        for (const el of targets) {
-          if (!el.classList.contains('is-visible')) continue;
-          const rect = el.getBoundingClientRect();
-          if (rect.bottom < -90 || rect.top > viewportHeight + 90) {
-            el.classList.remove('is-visible');
-          }
-        }
-      };
-      window.addEventListener('scroll', () => {
-        if (queued) return;
-        queued = true;
-        window.requestAnimationFrame(rearmOffscreen);
-      }, { passive: true });
     })();
   </script>
 </body>

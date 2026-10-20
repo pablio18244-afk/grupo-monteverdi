@@ -204,17 +204,36 @@
       const targets = document.querySelectorAll('.section-pad .section-index, .section-pad .overline, .section-pad h2, .section-pad .section-heading > p, .experience-card, .intro-copy, .intro-quote, .story-art, .story-copy, .contact-inner > p, .contact-inner > a');
       if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       targets.forEach((el, i) => { el.classList.add('scroll-reveal'); if (el.classList.contains('experience-card')) el.style.transitionDelay = ((Array.from(el.parentElement.children).indexOf(el)) * 110) + 'ms'; });
-      // Cada elemento se revela una sola vez. No volver a ocultarlo al salir
-      // del viewport: evita el parpadeo cíclico en los límites de pantalla.
+      // Conservar la magia: revelar de nuevo cuando el usuario regresa.
+      // Nunca ocultar un elemento en el borde del viewport: su propia
+      // transición (translateY) podría provocar oscilaciones y parpadeos.
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
-          }
+          if (entry.isIntersecting) entry.target.classList.add('is-visible');
         });
       }, { threshold: .1, rootMargin: '0px 0px -35px 0px' });
       targets.forEach(el => observer.observe(el));
+
+      // Rearmar la entrada solamente cuando se haya desplazado completamente
+      // fuera de pantalla, con 90 px de margen de seguridad (histéresis).
+      // Así cada regreso reproduce la animación sin bucles estando quieto.
+      let queued = false;
+      const rearmOffscreen = () => {
+        queued = false;
+        const viewportHeight = window.innerHeight;
+        for (const el of targets) {
+          if (!el.classList.contains('is-visible')) continue;
+          const rect = el.getBoundingClientRect();
+          if (rect.bottom < -90 || rect.top > viewportHeight + 90) {
+            el.classList.remove('is-visible');
+          }
+        }
+      };
+      window.addEventListener('scroll', () => {
+        if (queued) return;
+        queued = true;
+        window.requestAnimationFrame(rearmOffscreen);
+      }, { passive: true });
     })();
   </script>
 </body>

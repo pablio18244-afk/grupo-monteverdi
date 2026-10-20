@@ -21,10 +21,68 @@
 @keyframes welcome-exit {0%,5%{opacity:1}100%{opacity:0;visibility:hidden}}
 @media (prefers-reduced-motion:reduce){.welcome{display:none}}
 
-/* Scroll reveal — understated editorial transitions */
-.scroll-reveal { opacity: 0; transform: translateY(34px); transition: opacity .85s ease, transform .85s cubic-bezier(.2,.7,.2,1); }
-.scroll-reveal.is-visible { opacity: 1; transform: translateY(0); }
-@media (prefers-reduced-motion: reduce) { .scroll-reveal { opacity: 1; transform: none; transition: none; } }
+/* Magia tipográfica — una sola respiración por entrada, sin efectos cíclicos.
+   La composición MONTEVERDI vive en otro documento y permanece intacta. */
+.soft-reveal {
+  opacity: 0;
+  transform: translate3d(0, 19px, 0);
+  filter: blur(1.2px);
+  transition: opacity 1.02s ease-out,
+              transform 1.2s cubic-bezier(.18,.72,.24,1),
+              filter .95s ease-out;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.soft-reveal.is-visible {
+  opacity: 1;
+  transform: translate3d(0,0,0);
+  filter: blur(0);
+}
+.soft-reveal.experience-card, .soft-reveal.story-art,
+.soft-reveal.monteverdi-footer-brand, .soft-reveal.footer-contact-column {
+  filter: none;
+}
+.soft-reveal.letter-magic {
+  /* En los titulares aparece cada glifo, no un bloque opaco. */
+  opacity: 1; transform: none; filter: none;
+}
+.letter-visual { display: inline; }
+.letter-magic .soft-letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translate3d(0,.13em,0);
+  transition: opacity .94s ease-out, transform 1.06s cubic-bezier(.18,.72,.25,1);
+  transition-delay: calc(var(--reveal-delay, 0ms) + var(--glyph-delay, 0ms));
+}
+.soft-reveal.is-visible .soft-letter { opacity: 1; transform: translate3d(0,0,0); }
+/* No separar la tipografía caligráfica: preservar todos sus trazos ligados. */
+.letter-magic .letter-visual em {
+  opacity: 0;
+  transition: opacity 1.3s ease-out;
+  transition-delay: calc(var(--reveal-delay, 0ms) + 280ms);
+}
+.soft-reveal.is-visible .letter-visual em { opacity: 1; }
+.magic-sr-only {
+  position: absolute !important;
+  width: 1px !important; height: 1px !important;
+  padding: 0 !important; margin: -1px !important;
+  overflow: hidden !important; clip: rect(0,0,0,0) !important;
+  white-space: nowrap !important; border: 0 !important;
+}
+.button.soft-reveal.is-visible:hover { transform: translateY(-2px); }
+/* En encabezados anidados de una tarjeta basta con que se revele la tarjeta. */
+.experience-card.is-visible .soft-letter,
+.monteverdi-footer-brand.is-visible .soft-letter,
+.footer-contact-column.is-visible .soft-letter,
+.monteverdi-footer-grid > div.is-visible .soft-letter {
+  opacity: 1; transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .soft-reveal, .soft-reveal.is-visible,
+  .letter-magic .soft-letter, .letter-magic .letter-visual em {
+    opacity: 1; transform: none; filter: none;
+    transition: none;
+  }
+}
 
 /* Identidad institucional — misión y visión */
 .monteverdi-values { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(22px,4vw,64px); margin-top:clamp(48px,7vw,100px); }
@@ -201,13 +259,165 @@
 
   <script>
     (() => {
-      const targets = document.querySelectorAll('.section-pad .section-index, .section-pad .overline, .section-pad h2, .section-pad .section-heading > p, .experience-card, .intro-copy, .intro-quote, .story-art, .story-copy, .contact-inner > p, .contact-inner > a');
-      if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      targets.forEach((el, i) => { el.classList.add('scroll-reveal'); if (el.classList.contains('experience-card')) el.style.transitionDelay = ((Array.from(el.parentElement.children).indexOf(el)) * 110) + 'ms'; });
+      // La animación triunfal se mantiene completamente aislada en
+      // monteverdi-intro.html. Este controlador solo anima la página.
+      if (!('IntersectionObserver' in window) ||
+          window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      const selector = [
+        '.site-header .brand-name', '.site-header .brand-subtitle',
+        '.site-header .navigation a', '.site-header .header-contact',
+        '.hero .hero-content > .eyebrow', '.hero .hero-content > h1',
+        '.hero .hero-content > .hero-description',
+        '.hero .hero-content > .button', '.hero .hero-content > .hero-footnote',
+        '.hero > .hero-side-label',
+        '.intro .section-index', '.intro .intro-copy > .overline',
+        '.intro .intro-copy > h2', '.intro .intro-copy > p:not(.overline)',
+        '.intro .signature-rule',
+        '.experiences .section-heading .section-index',
+        '.experiences .section-heading h2',
+        '.experiences .section-heading > p', '.experiences .experience-card',
+        '.experiences .content-note',
+        '.story .story-art', '.story .story-copy > .section-index',
+        '.story .story-copy > .overline', '.story .story-copy > h2',
+        '.story .story-copy > p', '.story .story-copy > .text-link',
+        '.story .monteverdi-value > .overline',
+        '.story .monteverdi-value > h3', '.story .monteverdi-value > p',
+        '.contact .contact-inner > .overline',
+        '.contact .contact-inner > h2', '.contact .contact-inner > p',
+        '.contact .contact-inner > a',
+        '.monteverdi-footer .monteverdi-footer-brand',
+        '.monteverdi-footer .footer-contact-column',
+        '.monteverdi-footer .monteverdi-footer-grid > div:last-child',
+        '.monteverdi-footer .monteverdi-footer-bottom'
+      ].join(', ');
+
+      const targets = Array.from(document.querySelectorAll(selector));
+      const stages = new Map();
+      targets.forEach(el => {
+        const section = el.closest('.site-header, section, footer') || document.body;
+        const index = stages.get(section) || 0;
+        stages.set(section, index + 1);
+        el.style.setProperty('--reveal-delay', Math.min(460, index * 72) + 'ms');
+        el.classList.add('soft-reveal');
+      });
+
+      // Letras sueltas solamente en tipografía de títulos y pequeños rótulos.
+      // En párrafos largos la frase entera respira; así la lectura no se rompe.
+      const lettering = document.querySelectorAll([
+        '.site-header .brand-name', '.site-header .brand-subtitle',
+        'main h1', 'main h2', '.experience-card h3',
+        '.monteverdi-value h3', 'main .section-index',
+        'main .overline', '.experience-card .card-kicker',
+        '.monteverdi-footer .monteverdi-footer-heading'
+      ].join(', '));
+
+      const segmenter = typeof Intl.Segmenter === 'function'
+        ? new Intl.Segmenter('es', { granularity: 'grapheme' }) : null;
+      const graphemes = value => segmenter
+        ? Array.from(segmenter.segment(value), part => part.segment)
+        : Array.from(value);
+      lettering.forEach(el => {
+        if (el.querySelector('.magic-sr-only')) return;
+        const accessibleText = (el.innerText || el.textContent || '')
+          .replace(/\s+/g, ' ').trim();
+        if (!accessibleText) return;
+
+        const visual = document.createElement('span');
+        visual.className = 'letter-visual';
+        visual.setAttribute('aria-hidden', 'true');
+        while (el.firstChild) visual.appendChild(el.firstChild);
+        const accessible = document.createElement('span');
+        accessible.className = 'magic-sr-only';
+        accessible.textContent = accessibleText;
+        el.append(accessible, visual);
+        el.classList.add('letter-magic');
+
+        const walker = document.createTreeWalker(visual, NodeFilter.SHOW_TEXT);
+        const textNodes = [];
+        while (walker.nextNode()) {
+          const node = walker.currentNode;
+          // Las cursivas caligráficas son un solo gesto: nunca dividirlas.
+          if (node.parentElement?.closest('em') || !node.nodeValue.trim()) continue;
+          textNodes.push(node);
+        }
+        let count = 0;
+        textNodes.forEach(node => {
+          const fragment = document.createDocumentFragment();
+          graphemes(node.nodeValue).forEach(char => {
+            if (/\s/u.test(char)) {
+              fragment.appendChild(document.createTextNode(char));
+            } else {
+              const glyph = document.createElement('span');
+              glyph.className = 'soft-letter';
+              glyph.style.setProperty('--glyph-delay', Math.min(650, count * 13) + 'ms');
+              glyph.textContent = char;
+              fragment.appendChild(glyph);
+              count++;
+            }
+          });
+          node.replaceWith(fragment);
+        });
+      });
+
+      // El observador solamente muestra. Nunca oculta a causa de un umbral
+      // inestable: ese era el origen del bucle.
+      let enabled = false;
+      const viewportContains = el => {
+        const r = el.getBoundingClientRect();
+        return r.bottom > 35 && r.top < window.innerHeight - 45 &&
+          r.width > 0 && r.height > 0;
+      };
       const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); } else { entry.target.classList.remove('is-visible'); } });
-      }, { threshold: .1, rootMargin: '0px 0px -35px 0px' });
+        if (!enabled) return;
+        for (const entry of entries) {
+          if (entry.isIntersecting) entry.target.classList.add('is-visible');
+        }
+      }, { threshold: .06, rootMargin: '0px 0px -45px 0px' });
       targets.forEach(el => observer.observe(el));
+
+      const showInView = () => {
+        enabled = true;
+        targets.forEach(el => {
+          if (viewportContains(el)) el.classList.add('is-visible');
+        });
+      };
+
+      // Solo rearmar cuando el elemento esté ENTERAMENTE fuera de pantalla,
+      // con 170px de margen. Al quedarse quieto jamás cambia de estado.
+      let queued = false;
+      const rearmOutOfView = () => {
+        queued = false;
+        const bottom = window.innerHeight + 170;
+        targets.forEach(el => {
+          if (!el.classList.contains('is-visible')) return;
+          const r = el.getBoundingClientRect();
+          if (r.bottom < -170 || r.top > bottom)
+            el.classList.remove('is-visible');
+        });
+      };
+      window.addEventListener('scroll', () => {
+        if (queued) return;
+        queued = true;
+        requestAnimationFrame(rearmOutOfView);
+      }, { passive: true });
+
+      // La portada entra en armonía con el fundido final del calderón;
+      // no se modifica el iframe ni su animación de 7.05s + 1.2s.
+      let revealTimer;
+      const coordinateWithWelcome = () => {
+        enabled = false;
+        clearTimeout(revealTimer);
+        // En un replay se rearma lo que esté visible detrás de la portada.
+        targets.forEach(el => {
+          if (viewportContains(el)) el.classList.remove('is-visible');
+        });
+        revealTimer = setTimeout(showInView, 7050);
+      };
+      if (document.getElementById('welcome')) coordinateWithWelcome();
+      else showInView();
+      document.querySelector('button[aria-label="Repetir presentación de Grupo Monteverdi"]')
+        ?.addEventListener('click', coordinateWithWelcome);
     })();
   </script>
 </body>

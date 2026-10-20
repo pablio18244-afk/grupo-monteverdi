@@ -26,6 +26,34 @@
 .scroll-reveal.is-visible { opacity: 1; transform: translateY(0); }
 @media (prefers-reduced-motion: reduce) { .scroll-reveal { opacity: 1; transform: none; transition: none; } }
 
+/* Cierre musical: entrada escalonada, cálida, sin parpadeos */
+.contact .contact-inner > .scroll-reveal {
+  opacity: 0;
+  transform: translate3d(0, 25px, 0);
+  filter: blur(2.4px);
+  transition-property: opacity, transform, filter;
+  transition-duration: 1.05s, 1.22s, 1.05s;
+  transition-timing-function: ease-out, cubic-bezier(.2,.75,.2,1), ease-out;
+  transition-delay: var(--contact-reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+.contact .contact-inner > .scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  filter: blur(0);
+}
+.contact .contact-inner > .overline.scroll-reveal { --contact-reveal-delay: 0ms; }
+.contact .contact-inner > h2.scroll-reveal { --contact-reveal-delay: 100ms; }
+.contact .contact-inner > p:not(.overline):not(.contact-caption).scroll-reveal { --contact-reveal-delay: 220ms; }
+.contact .contact-inner > a.scroll-reveal { --contact-reveal-delay: 310ms; }
+.contact .contact-inner > .contact-caption.scroll-reveal { --contact-reveal-delay: 420ms; }
+@media (prefers-reduced-motion: reduce) {
+  .contact .contact-inner > .scroll-reveal,
+  .contact .contact-inner > .scroll-reveal.is-visible {
+    opacity: 1; transform: none; filter: none; transition: none; will-change: auto;
+  }
+}
+
 /* Identidad institucional — misión y visión */
 .monteverdi-values { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(22px,4vw,64px); margin-top:clamp(48px,7vw,100px); }
 .monteverdi-value { border-top:1px solid var(--gold); padding-top:28px; }
